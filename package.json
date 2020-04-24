@@ -1,0 +1,25 @@
+{
+  "name": "employee-tracker",
+  "version": "1.0.0",
+  "description": "application that manages a company's employees",
+  "main": "cli.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jpino7/EmployeeTracker.git"
+  },
+  "author": "Joanna Pino",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jpino7/EmployeeTracker/issues"
+  },
+  "homepage": "https://github.com/jpino7/EmployeeTracker",
+  "dependencies": {
+    "console.table": "^0.10.0",
+    "inquirer": "^7.1.0",
+    "mysql": "^2.18.1"
+  }
+}
