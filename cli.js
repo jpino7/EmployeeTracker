@@ -34,5 +34,26 @@ function startPrompting() {
             "EXIT"]
     }).then(function (answer) {
         console.log("You selected: " + answer.action);
+
+        switch (answer.action) {
+            case "Add Department":
+                addDepartment();
+                break;
+            case "Add Role":
+                addRole();
+                break;
+            case "Add Employee":
+                addEmployee();
+                break;
+        }
     });
 }
+
+
+
+// Functions for Adding Dept, Role, Employee 
+function addDepartment()
+
+function addRole()
+
+function addEmployee()
