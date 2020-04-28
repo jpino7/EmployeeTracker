@@ -45,6 +45,11 @@ function startPrompting() {
             case "Add Employee":
                 addEmployee();
                 break;
+            case "Update Employee Role":
+                updateEmployeeRole();
+                break;
+            default:
+                exit();
         }
     });
 }
@@ -52,8 +57,17 @@ function startPrompting() {
 
 
 // Functions for Adding Dept, Role, Employee 
-function addDepartment()
+// function addDepartment()
 
-function addRole()
+// function addRole()
 
-function addEmployee()
+// function addEmployee()
+
+// Function for Updating Employee Role
+// function updateEmployeeRole()
+
+// Function to Exit App
+function exit() {
+    connection.end();
+    process.exit();
+}
