@@ -139,9 +139,21 @@ function addEmployee() {
 }
 
 // // Functions for Viewing Dept, Role, Employee
-// function viewDepartment()
+function viewDepartment() {
+    connection.query("SELECT * FROM department", function (err, res) {
+        if (err) throw err;
+        console.table(res);
+        startPrompting();
+    });
+}
 
-// function viewRole()
+function viewRole() {
+    connection.query("SELECT * FROM role", function (err, res) {
+        if (err) throw err;
+        console.table(res);
+        startPrompting();
+    });
+}
 
 // function viewEmployee()
 
