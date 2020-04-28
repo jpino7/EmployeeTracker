@@ -27,10 +27,13 @@ function startPrompting() {
         choices: ["Add Department",
             "Add Role",
             "Add Employee",
-            "View Department",
-            "View Role",
+            "View Departments",
+            "View Roles",
             "View Employees",
             "Update Employee Role",
+            "Delete Department",
+            "Delete Role",
+            "Delete Employee",
             "EXIT"]
     }).then(function (answer) {
         console.log("You selected: " + answer.action);
@@ -45,17 +48,26 @@ function startPrompting() {
             case "Add Employee":
                 addEmployee();
                 break;
-            case "View Department":
-                viewDepartment();
+            case "View Departments":
+                viewDepartments();
                 break;
-            case "View Role":
-                viewRole();
+            case "View Roles":
+                viewRoles();
                 break;
             case "View Employees":
                 viewEmployees();
                 break;
             case "Update Employee Role":
                 updateEmployeeRole();
+                break;
+            case "Delete Department":
+                deleteDepartment();
+                break;
+            case "Delete Role":
+                deleteRole();
+                break;
+            case "Delete Employee":
+                deleteEmployee();
                 break;
             default:
                 exit();
@@ -139,7 +151,7 @@ function addEmployee() {
 }
 
 // // Functions for Viewing Dept, Role, Employee
-function viewDepartment() {
+function viewDepartments() {
     connection.query("SELECT * FROM department", function (err, res) {
         if (err) throw err;
         console.table(res);
@@ -147,7 +159,7 @@ function viewDepartment() {
     });
 }
 
-function viewRole() {
+function viewRoles() {
     connection.query("SELECT * FROM role", function (err, res) {
         if (err) throw err;
         console.table(res);
@@ -184,6 +196,50 @@ function updateEmployeeRole() {
         });
     });
 }
+
+// Functions for Deleting Dept, Role, Employee
+function deleteDepartment() {
+    inquirer.prompt({
+    type: "input",
+    message: "Enter Department Name:",
+    name: "deptName"
+}).then(function (answer) {
+    connection.query("DELETE FROM department WHERE name=?", [answer.deptName], function (err, res) {
+        if (err) throw err;
+        console.log("Successfully Deleted Department!");
+        startPrompting();
+    });
+});
+}
+
+function deleteRole() {
+    inquirer.prompt({
+    type: "input",
+    message: "Enter Role Title:",
+    name: "roleTitle"
+}).then(function (answer) {
+    connection.query("DELETE FROM role WHERE title=?", [answer.roleTitle], function (err, res) {
+        if (err) throw err;
+        console.log("Successfully Deleted Role!");
+        startPrompting();
+    });
+});
+}
+
+function deleteEmployee() {
+    inquirer.prompt({
+    type: "input",
+    message: "Enter Employee ID:",
+    name: "employeeID"
+}).then(function (answer) {
+    connection.query("DELETE FROM employee WHERE id =?", [answer.employeeID], function (err, res) {
+        if (err) throw err;
+        console.log("Successfully Deleted Employee!");
+        startPrompting();
+    });
+});
+}
+
 
 // Function to Exit App
 function exit() {
