@@ -1,3 +1,22 @@
+// -----------------------------------------------------------
+// |                                                          |
+// |  ____              _                                     |
+// | | ___|_ __ ___ __ | | ___  _   _  ___  ___               |
+// | | _| | '_`_\| '_ \| |/ _ \| | | |/ _ \/ _ \              |
+// | | |__| | || | |_) | | (_) | |_| |  __/  __/              |
+// | |____|_|_||_| .__/|_|\___/ \_,| |\___|\___/              |
+// |             |_|            |___/                         |
+// |                                                          |
+// |  __  __                                                  |
+// | |  \/  | __ _ _ __   __ _  __ _  ___ _ __                |
+// | | |\/| |/_ ` | '_ \ /  ` |/  ` |/ _ \ '__|               |
+// | | |  | | (_| | | | | (_| | (_| |  __/ |                  |
+// | |_|  |_|\__,_|_| | |\__,_|\__, |\___|_|                  |
+// |                           |___/                          |
+// |                                                          |
+// `__________________________________________________________,
+
+
 // Dependencies
 const mysql = require("mysql");
 const inquirer = require("inquirer");
@@ -76,7 +95,6 @@ function startPrompting() {
 }
 
 
-
 // Functions for Adding Dept, Role, Employee 
 function addDepartment() {
     inquirer.prompt({
@@ -150,7 +168,7 @@ function addEmployee() {
     });
 }
 
-// // Functions for Viewing Dept, Role, Employee
+// Functions for Viewing Dept, Role, Employee
 function viewDepartments() {
     connection.query("SELECT * FROM department", function (err, res) {
         if (err) throw err;
