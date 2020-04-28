@@ -51,8 +51,8 @@ function startPrompting() {
             case "View Role":
                 viewRole();
                 break;
-            case "View Employee":
-                viewEmployee();
+            case "View Employees":
+                viewEmployees();
                 break;
             case "Update Employee Role":
                 updateEmployeeRole();
@@ -155,7 +155,7 @@ function viewRole() {
     });
 }
 
-function viewEmployee() {
+function viewEmployees() {
     connection.query("SELECT * FROM employee", function (err, res) {
         if (err) throw err;
         console.table(res);
@@ -163,8 +163,27 @@ function viewEmployee() {
     });
 }
 
-// // Function for Updating Employee Role
-// function updateEmployeeRole()
+// Function for Updating Employee Role
+function updateEmployeeRole() {
+    inquirer.prompt([{
+        type: "input",
+        message: "Type First Name of employee you would like to update:",
+        name: "employeeUpdate"
+    },
+    {
+        type: "input",
+        message: "Enter the updated role:",
+        name: "updateRole"
+    }
+    ]).then(function (answer) {
+        connection.query("UPDATE employee SET role_id=? WHERE first_name=?", [answer.updateRole, answer.employeeUpdate], function (err, res) {
+            if (err) throw err;
+            console.table(res);
+            console.log("Successfully updated Employee Role!");
+            startPrompting();
+        });
+    });
+}
 
 // Function to Exit App
 function exit() {
