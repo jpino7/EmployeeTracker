@@ -45,6 +45,15 @@ function startPrompting() {
             case "Add Employee":
                 addEmployee();
                 break;
+            case "View Department":
+                viewDepartment();
+                break;
+            case "View Role":
+                viewRole();
+                break;
+            case "View Employee":
+                viewEmployee();
+                break;
             case "Update Employee Role":
                 updateEmployeeRole();
                 break;
@@ -57,14 +66,21 @@ function startPrompting() {
 
 
 // Functions for Adding Dept, Role, Employee 
-// function addDepartment()
+function addDepartment()
 
-// function addRole()
+function addRole()
 
-// function addEmployee()
+function addEmployee()
+
+// Functions for Viewing Dept, Role, Employee
+function viewDepartment()
+
+function viewRole()
+
+function viewEmployee()
 
 // Function for Updating Employee Role
-// function updateEmployeeRole()
+function updateEmployeeRole()
 
 // Function to Exit App
 function exit() {
