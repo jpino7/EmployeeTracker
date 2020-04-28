@@ -66,21 +66,34 @@ function startPrompting() {
 
 
 // Functions for Adding Dept, Role, Employee 
-function addDepartment()
+function addDepartment() {
+    inquirer.prompt({
+            type: "input",
+            message: "Enter name of department:",
+            name: "deptName"
+        }).then(function (answer) {
+            connection.query("INSERT INTO department (name) VALUES (?)", [answer.deptName], function (err, res) {
+                if (err) throw err;
+                console.table(res)
+                console.log("Successfully added Department!");
+                startPrompting();
+            })
+        });
+}
 
-function addRole()
+// function addRole()
 
-function addEmployee()
+// function addEmployee()
 
-// Functions for Viewing Dept, Role, Employee
-function viewDepartment()
+// // Functions for Viewing Dept, Role, Employee
+// function viewDepartment()
 
-function viewRole()
+// function viewRole()
 
-function viewEmployee()
+// function viewEmployee()
 
-// Function for Updating Employee Role
-function updateEmployeeRole()
+// // Function for Updating Employee Role
+// function updateEmployeeRole()
 
 // Function to Exit App
 function exit() {
