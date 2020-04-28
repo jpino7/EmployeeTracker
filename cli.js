@@ -68,22 +68,75 @@ function startPrompting() {
 // Functions for Adding Dept, Role, Employee 
 function addDepartment() {
     inquirer.prompt({
-            type: "input",
-            message: "Enter name of department:",
-            name: "deptName"
-        }).then(function (answer) {
-            connection.query("INSERT INTO department (name) VALUES (?)", [answer.deptName], function (err, res) {
-                if (err) throw err;
-                console.table(res)
-                console.log("Successfully added Department!");
-                startPrompting();
-            })
-        });
+        type: "input",
+        message: "Enter name of department:",
+        name: "deptName"
+    }).then(function (answer) {
+        connection.query("INSERT INTO department (name) VALUES (?)", [answer.deptName], function (err, res) {
+            if (err) throw err;
+            console.table(res)
+            console.log("Successfully added Department!");
+            startPrompting();
+        })
+    });
 }
 
-// function addRole()
+function addRole() {
+    inquirer.prompt([{
+        type: "input",
+        message: "Enter role:",
+        name: "roleName"
+    },
+    {
+        type: "input",
+        message: "Enter role salary:",
+        name: "annualSalary"
+    },
+    {
+        type: "input",
+        message: "Enter department ID:",
+        name: "deptID"
+    }
+    ]).then(function (answer) {
+        connection.query("INSERT INTO role (title, salary, department_id) VALUES (?,?,?)", [answer.roleName, answer.annualSalary, answer.deptID], function (err, res) {
+            if (err) throw err;
+            console.table(res);
+            console.log("Successfully added Role!");
+            startPrompting();
+        });
+    });
+}
 
-// function addEmployee()
+function addEmployee() {
+    inquirer.prompt([{
+        type: "input",
+        message: "Enter first name of new employee:",
+        name: "firstName"
+    },
+    {
+        type: "input",
+        message: "Enter last name of new employee:",
+        name: "lastName"
+    },
+    {
+        type: "input",
+        message: "Enter employee's role ID:",
+        name: "roleID"
+    },
+    {
+        type: "input",
+        message: "Enter employee's manager ID:",
+        name: "managerID"
+    }
+    ]).then(function (answer) {
+        connection.query("INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)", [answer.firstName, answer.lastName, answer.roleID, answer.managerID], function (err, res) {
+            if (err) throw err;
+            console.table(res);
+            console.log("Successfully added New Employee!");
+            startPrompting();
+        });
+    });
+}
 
 // // Functions for Viewing Dept, Role, Employee
 // function viewDepartment()
