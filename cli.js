@@ -29,7 +29,7 @@ function startPrompting() {
             "Add Employee",
             "View Department",
             "View Role",
-            "View Employee",
+            "View Employees",
             "Update Employee Role",
             "EXIT"]
     }).then(function (answer) {
