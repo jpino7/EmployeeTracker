@@ -155,7 +155,13 @@ function viewRole() {
     });
 }
 
-// function viewEmployee()
+function viewEmployee() {
+    connection.query("SELECT * FROM employee", function (err, res) {
+        if (err) throw err;
+        console.table(res);
+        startPrompting();
+    });
+}
 
 // // Function for Updating Employee Role
 // function updateEmployeeRole()
